@@ -15,21 +15,16 @@ module marketplace::marketplace_listing_utils {
 
 
     //
-    // Errors
+    // Errors of numbers
     //
-
     /// Not enough token to list
     const EOWNER_NOT_HAVING_ENOUGH_TOKEN: u64 = 1;
-
     /// Listing doesn't exist
     const ELISTING_NOT_EXIST:u64 = 2;
-
     /// Withdraw time should be longer than listing time
     const EWITHDRAW_EXPIRE_TIME_SHORT_THAN_LISTING_TIME: u64 = 3;
-
     /// Start time should be less than expire time
     const ESTART_TIME_LARGER_THAN_EXPIRE_TIME: u64 = 4;
-
     /// Listing zero token
     const ELISTING_ZERO_TOKEN: u64 = 5;
 
