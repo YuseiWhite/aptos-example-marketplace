@@ -30,23 +30,31 @@ module marketplace::marketplace_listing_utils {
 
 
     /// immutable struct for recording listing info.
+    // fantomとは何の型か理解する
+    // tokenに関する説明は以下にある
+    // https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/framework/aptos-token/doc/token.md
     struct Listing<phantom CoinType> has drop, store {
         id: ID,
         token_id: TokenId,
         amount: u64,
         min_price: u64,
-        instant_sale: bool, // true for marketplace and false for auction
+        instant_sale: bool, // true for marketplace and false for auction マケプレだけだったらこれはいらない
         start_sec: u64, // timestamp in secs for the listing starting time
         expiration_sec: u64, // timestamp in secs for the listing expiration time
+        // 以下の型についても理解する
         withdraw_cap: WithdrawCapability,
         config: PropertyMap,
     }
 
     struct ListingEvent has copy, drop, store {
+        // GUIDを調べるに便利な、copy, drop, storeの機能を持つただのID
+        // GUIDとは、送信者のアドレスとカウンタから得られるグローバルにユニークな識別子
         id: ID,
+        // GUIDのTokenバージョン、ただこっちはcopyの機能を持つ
         token_id: TokenId,
         amount: u64,
         min_price: u64,
+        // 現在売られているかどうか
         instant_sale: bool,
         start_sec: u64,
         expiration_sec: u64,
