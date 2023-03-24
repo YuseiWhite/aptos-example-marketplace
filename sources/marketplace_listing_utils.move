@@ -71,6 +71,7 @@ module marketplace::marketplace_listing_utils {
     /// store listings on the owner's account
     struct ListingRecords<phantom CoinType> has key {
         records: Table<ID, Listing<CoinType>>,
+        // 他のモジュールはこのハンドルにイベントを行える、また、ストレージはこれを使って、過去のベント総数を証明できる。
         listing_event: EventHandle<ListingEvent>,
         cancel_listing_event: EventHandle<CancelListingEvent>,
     }
